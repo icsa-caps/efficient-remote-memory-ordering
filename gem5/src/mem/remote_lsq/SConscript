@@ -1,0 +1,5 @@
+Import('*')
+
+SimObject('rlsq.py', sim_objects=['RemoteLsq'])
+Source('rlsq.cc')
+DebugFlag('RemoteLsq')

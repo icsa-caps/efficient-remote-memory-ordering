@@ -1,0 +1,9 @@
+# Set the PROTOCOL="MSI" if the RUBY_PROTOCOL_MSI=y
+config PROTOCOL
+    default "MSI" if RUBY_PROTOCOL_MSI
+
+# Add the new choice RUBY_PROTOCOL_MSI
+cont_choice "Ruby protocol"
+    config RUBY_PROTOCOL_MSI
+        bool "MSI"
+endchoice

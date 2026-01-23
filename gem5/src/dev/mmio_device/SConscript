@@ -1,0 +1,8 @@
+Import('*')
+
+SimObject('MMIO_device.py', sim_objects=['MmioDevice'])
+Source('mmio_device.cc')
+
+DebugFlag('MmioDevice')
+
+

@@ -1,0 +1,51 @@
+[
+    {
+        "category": "kernel",
+        "id": "x86-linux-kernel-5.4.49",
+        "description": "A test kernel",
+        "architecture": "X86",
+        "size": 1,
+        "tags": [
+            "test"
+        ],
+        "is_zipped": false,
+        "md5sum": "60a53c7d47d7057436bf4b9df707a841",
+        "source": "",
+        "url": "../experiments/ubuntu-files/vmlinux-5.4.49",
+        "license": "",
+        "author": [],
+        "source_url": "",
+        "resource_version": "1.0.0",
+        "gem5_versions": [
+            "23.0"
+        ],
+        "example_usage": "usage"
+    },
+    {
+        "category": "disk-image",
+        "id": "ubuntu-24.04.2-live-server-amd64-test",
+        "description": "A test disk-image",
+        "architecture": "X86",
+        "size": 1,
+        "tags": [
+            "test"
+        ],
+        "is_zipped": false,
+        "md5sum": "4e9486949879a1545ca6da561eb348e4",
+        "source": "",
+        "url": "../experiments/ubuntu-test.img",
+        "license": "",
+        "author": [],
+        "source_url": "",
+        "resource_version": "1.0.0",
+        "gem5_versions": [
+            "23.0"
+        ],
+        "example_usage": "usage"
+    }
+]
+
+
+
+
+

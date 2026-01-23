@@ -1,0 +1,8 @@
+Import('*')
+
+SimObject('iohub.py', sim_objects=['IOHub'])
+Source('iohub.cc')
+
+DebugFlag('IOHub')
+DebugFlag('IOHubVerbose')
+

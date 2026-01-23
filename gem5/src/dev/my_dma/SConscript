@@ -1,0 +1,12 @@
+Import('*')
+
+SimObject('MyDMA.py', sim_objects=['MyDMADevice', 'TestRdmaDevice', 'CellDevice', 'SpscDmaDevice', 'P2pWriteDevice', 'P2pReadDevice'])
+Source('my_dma.cc')
+
+DebugFlag('RDMADevice')
+DebugFlag('CellDevice')
+DebugFlag('CellThread')
+DebugFlag('CellReaderThread')
+DebugFlag('CellWriterThread')
+
+DebugFlag('P2pDevice')
