@@ -8,10 +8,11 @@ The files for gem5 simulation can be found in the gem5 directory.
 The files are obtained from version 24.1 of gem5.
 
 Requirements:
-gcc version >= 10
-Clang 7 to 16
-SCons 3.0 or greater
-Python 3.6+
-protobuf 2.1+
+
+* gcc version >= 10
+* Clang 7 to 16
+* SCons 3.0 or greater
+* Python 3.6+
+* protobuf 2.1+
 
 
