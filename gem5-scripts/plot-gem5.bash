@@ -6,11 +6,13 @@ if [ ! -d $RESULTS_DIR ]; then
     mkdir $RESULTS_DIR
 fi
 
+PYTHON=python3
+
 PLOTS_DIR=plots
 
 if [ ! -d $PLOTS_DIR ]; then
     mkdir $PLOTS_DIR
 fi
 
-python3 plot.py
+$PYTHON plot.py
 
