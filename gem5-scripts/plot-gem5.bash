@@ -2,6 +2,8 @@
 
 PYTHON=python3
 
+pip3 install matplotlib numpy
+
 RESULTS_DIR=results
 
 if [ ! -d $RESULTS_DIR ]; then
