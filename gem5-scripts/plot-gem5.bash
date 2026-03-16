@@ -12,5 +12,5 @@ if [ ! -d $PLOTS_DIR ]; then
     mkdir $PLOTS_DIR
 fi
 
-
+python3 plot.py
 
