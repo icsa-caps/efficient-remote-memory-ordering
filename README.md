@@ -15,4 +15,28 @@ Requirements for gem5:
 * Python 3.6+
 * protobuf 2.1+
 
+Scripts for running the gem5 simulations can be found in the directory `gem5-scripts`.
+
+Instructions for reproducing the figures from gem5 simulation:
+
+1. Enter the gem5 script directory: `cd gem5-scripts`
+2. Run the script to set up and build gem5: `./setup-gem5.bash`
+3. Run the script to run all simulations: `./run-gem5.bash`
+4. Run the script to plot all simulation results: `./plot-gem5.bash`
+
+Plots can be found in the directory `gem5-scripts/plots`.
+
+### CACTI
+
+Scripts for building and running CACTI can be found in the directory `cacti-scripts`. 
+
+Instructions for obtaining the CACTI results:
+
+1. `git submodule init`
+2. `git submodule update`
+3. Enter the CACTI script directory: `cd gem5-scripts`
+4. Build CACTI: `./build_cacti.bash`
+5. Run CACTI: `./run_cacti.bash`
+
+Results can be found in the directory `cacti-scripts/results`.
 
