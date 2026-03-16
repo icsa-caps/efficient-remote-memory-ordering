@@ -14,6 +14,8 @@ scons build/X86/gem5.opt
 # Make executables
 cd tests/test-progs/device-dma
 
+mkdir bin
+
 make bin/inf-loop
 make bin/idle-loop
 
