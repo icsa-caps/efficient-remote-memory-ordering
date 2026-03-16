@@ -1,5 +1,9 @@
 #!/bin/bash
 
-./cacti -infile rlsq.cfg
-./cacti -infile rob.cfg
+CACTI=../cacti/cacti
+
+$CACTI -infile rlsq.cfg
+$CACTI -infile rob.cfg
+
+
 
