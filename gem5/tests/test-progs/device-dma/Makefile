@@ -26,6 +26,30 @@ $(BUILD_DIR)/cell: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c 
 $(BUILD_DIR)/cell-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
 	gcc -Wall -Wextra -Werror -O3 -std=c17 -o $@ $^
 
+$(BUILD_DIR)/cell64-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=1 -o $@ $^
+
+$(BUILD_DIR)/cell128-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=2 -o $@ $^
+
+$(BUILD_DIR)/cell256-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=4 -o $@ $^
+
+$(BUILD_DIR)/cell512-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=8 -o $@ $^
+
+$(BUILD_DIR)/cell1024-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=16 -o $@ $^
+
+$(BUILD_DIR)/cell2048-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=32 -o $@ $^
+
+$(BUILD_DIR)/cell4096-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=64 -o $@ $^
+
+$(BUILD_DIR)/cell8192-ro: $(BENCH_DIR)/cell.c $(BENCH_DIR)/common.c $(BENCH_DIR)/dma.c $(BENCH_DIR)/rdwr.c
+	gcc -Wall -Wextra -Werror -O3 -std=c17 -DCELL_NBLKS=128 -o $@ $^
+
 $(BUILD_DIR)/mmio-write: $(BENCH_DIR)/mmio-write.c
 	gcc -O3 -o $@ $^
 

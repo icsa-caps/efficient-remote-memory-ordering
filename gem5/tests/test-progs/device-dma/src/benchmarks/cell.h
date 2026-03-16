@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#define CELL_NBLKS 4
+// #define CELL_NBLKS 4
 #define CELL_SIZE (CELL_NBLKS*CLSIZE)
 
 void cell_read(void *dst, void *src);
