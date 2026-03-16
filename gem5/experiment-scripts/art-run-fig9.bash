@@ -8,9 +8,7 @@ fi
 
 declare -a cell_sizes=(64 128 256 512 1024 2048 4096 8192)
 
-TIMESTAMP=$(date +"%Y-%m-%d")
-
-OUT_DIR=$RESULTS_DIR/cell-1r_p2p_$TIMESTAMP
+OUT_DIR=$RESULTS_DIR/cell-1r_p2p
 
 if [ ! -d $OUT_DIR ]; then
     mkdir $OUT_DIR

@@ -8,9 +8,7 @@ fi
 
 declare -a rdma_get_sizes=(64 128 256 512 1024 2048 4096 8192)
 
-TIMESTAMP=$(date +"%Y-%m-%d")
-
-OUT_DIR=$RESULTS_DIR/rd_stream_$TIMESTAMP
+OUT_DIR=$RESULTS_DIR/rd_stream
 
 if [ ! -d $OUT_DIR ]; then
     mkdir $OUT_DIR

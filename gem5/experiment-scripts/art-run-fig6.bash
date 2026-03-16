@@ -9,13 +9,7 @@ fi
 declare -a num_threads=(1 2 4 8 16)
 declare -a cell_sizes=(64 128 256 512 1024 2048 4096 8192)
 
-# For debugging this script
-# declare -a num_threads=(1 2)
-# declare -a cell_sizes=(64 256)
-
-TIMESTAMP=$(date +"%Y-%m-%d")
-
-OUT_DIR=$RESULTS_DIR/cell-2r_$TIMESTAMP
+OUT_DIR=$RESULTS_DIR/cell-2r
 
 if [ ! -d $OUT_DIR ]; then
     mkdir $OUT_DIR

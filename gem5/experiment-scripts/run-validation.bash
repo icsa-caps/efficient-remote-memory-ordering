@@ -8,9 +8,7 @@ fi
 
 declare -a cell_get_sizes=(64 128 256 512 1024 2048 4096 8192)
 
-TIMESTAMP=$(date +"%Y-%m-%d")
-
-OUT_DIR=$RESULTS_DIR/cell-val_$TIMESTAMP
+OUT_DIR=$RESULTS_DIR/cell-val
 
 if [ ! -d $OUT_DIR ]; then
     mkdir $OUT_DIR

@@ -8,9 +8,8 @@ if [ ! -d $RESULTS_DIR ]; then
     mkdir $RESULTS_DIR
 fi
 
-TIMESTAMP=$(date +"%Y-%m-%d")
 
-OUT_DIR=$RESULTS_DIR/mmio-wr-bench_$TIMESTAMP
+OUT_DIR=$RESULTS_DIR/mmio-wr-bench
 
 if [ ! -d $OUT_DIR ]; then
     mkdir $OUT_DIR

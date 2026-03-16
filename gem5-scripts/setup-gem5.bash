@@ -5,3 +5,11 @@ sudo apt install build-essential scons python3-dev git pre-commit zlib1g zlib1g-
     libboost-all-dev  libhdf5-serial-dev python3-pydot python3-venv python3-tk mypy \
     m4 libcapstone-dev libpng-dev libelf-dev pkg-config wget cmake doxygen clang-format
 
+CUR_DIR=$(pwd)
+
+# Build gem5
+cd ../gem5
+scons build/X86/gem5.opt
+
+cd $CUR_DIR
+
