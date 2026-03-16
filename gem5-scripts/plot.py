@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as font_manager
-import matplotlib.ticker as ticker
-import matplotlib as mpl
-import os
+# import matplotlib.font_manager as font_manager
+# import matplotlib.ticker as ticker
+# import matplotlib as mpl
+# import os
 import numpy as np
-import pandas as pd
+# import pandas as pd
 from matplotlib.ticker import ScalarFormatter
-from math import log2
+# from math import log2
 from sys import argv
 
 PLOT_WIDTH = 3.38
