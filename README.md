@@ -1,13 +1,13 @@
 # Efficient Remote Memory Ordering
 
-Coming soon: code for submission to ASPLOS 2026.
+Code for submission to ASPLOS 2026.
 
 ### gem5 Simulation
 
 The files for gem5 simulation can be found in the gem5 directory. 
 The files are obtained from version 24.1 of gem5.
 
-Requirements:
+Requirements for gem5:
 
 * gcc version >= 10
 * Clang 7 to 16
