@@ -7,6 +7,8 @@ apt install build-essential scons python3-dev git pre-commit zlib1g zlib1g-dev \
 
 CUR_DIR=$(pwd)
 
+PYTHON=python3
+
 # Build gem5
 cd ../gem5
 scons build/X86/gem5.opt
@@ -39,6 +41,11 @@ make bin/mmio-write-mfence4096
 make bin/mmio-write-mfence8192
 
 make bin/inf-p2p
+
+# Make DMA traces
+mkdir trc
+cd scripts
+$PYTHON gen_validation_trace.py
 
 cd $CUR_DIR
 
