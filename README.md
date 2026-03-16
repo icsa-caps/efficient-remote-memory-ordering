@@ -27,7 +27,8 @@ Instructions for reproducing the figures from gem5 simulation:
 1. Enter the gem5 script directory: `cd gem5-scripts`
 2. Run the script to set up and build gem5: `./setup-gem5.bash`
 3. Run the script to run all simulations: `./run-gem5.bash`
-4. Run the script to plot all simulation results: `./plot-gem5.bash`
+4. Set the python command in line 3 of `plot-gem5.bash` (default is `python3`)
+5. Run the script to plot all simulation results: `./plot-gem5.bash`
 
 Plots can be found in the directory `gem5-scripts/plots`.
 

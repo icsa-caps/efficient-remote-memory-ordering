@@ -1,12 +1,12 @@
 #!/bin/bash
 
+PYTHON=python3
+
 RESULTS_DIR=results
 
 if [ ! -d $RESULTS_DIR ]; then
     mkdir $RESULTS_DIR
 fi
-
-PYTHON=python3
 
 PLOTS_DIR=plots
 
