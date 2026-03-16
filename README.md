@@ -15,6 +15,11 @@ Requirements for gem5:
 * Python 3.6+
 * protobuf 2.1+
 
+Python requirements for plotting results:
+
+* NumPy
+* Matplotlib
+
 Scripts for running the gem5 simulations can be found in the directory `gem5-scripts`.
 
 Instructions for reproducing the figures from gem5 simulation:
