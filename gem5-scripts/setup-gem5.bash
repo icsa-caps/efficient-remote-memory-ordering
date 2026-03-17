@@ -7,8 +7,6 @@ apt install build-essential scons python3-dev git pre-commit zlib1g zlib1g-dev \
 
 CUR_DIR=$(pwd)
 
-PYTHON=python3
-
 # Build gem5
 cd ../gem5
 scons build/X86/gem5.opt

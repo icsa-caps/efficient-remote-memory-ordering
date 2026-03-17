@@ -1,5 +1,12 @@
 #!/bin/bash
 
+CUR_DIR=$(pwd)
+
+PYTHON=python3
+
+# Make executables
+cd ../gem5tests/test-progs/device-dma
+
 BIN_DIR=bin
 
 if [ ! -d $BIN_DIR ]; then
