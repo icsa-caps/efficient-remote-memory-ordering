@@ -2,6 +2,8 @@
 
 SCRIPT_DIR=$(pwd)
 
+rm -rf results
+
 cd ../gem5/experiment-scripts
 
 bash run-art-all.bash
