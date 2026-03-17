@@ -13,8 +13,6 @@ if [ ! -d $BIN_DIR ]; then
     mkdir $BIN_DIR
 fi
 
-mkdir bin
-
 make bin/inf-loop
 make bin/idle-loop
 
@@ -41,13 +39,12 @@ make bin/inf-p2p
 
 # Make DMA traces
 
-TRC_DIR=trc
+TRC_DIR=trc/read-dma-traces
 
 if [ ! -d $TRC_DIR ]; then
-    mkdir $TRC_DIR
+    mkdir -p $TRC_DIR
 fi
 
-mkdir trc
 cd scripts
 $PYTHON gen-validation-trace.py
 
