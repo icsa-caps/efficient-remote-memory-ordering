@@ -5,7 +5,7 @@ CUR_DIR=$(pwd)
 PYTHON=python3
 
 # Make executables
-cd ../gem5tests/test-progs/device-dma
+cd ../gem5/tests/test-progs/device-dma
 
 BIN_DIR=bin
 
