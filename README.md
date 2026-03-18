@@ -33,7 +33,8 @@ Instructions for reproducing the figures from gem5 simulation:
 
 Plots can be found in the directory `gem5-scripts/plots`. 
 
-Running simulations for individual figures can be done by entering the directory `gem5/experiment-scripts` and executing the bash scripts at step 4. 
+Running simulations for individual figures can be done by entering the directory `gem5/experiment-scripts` and executing the required bash scripts. 
+This should be done at step 4. 
 
 ### CACTI
 
