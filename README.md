@@ -44,7 +44,7 @@ Instructions for obtaining the CACTI results:
 
 1. `git submodule init`
 2. `git submodule update`
-3. Enter the CACTI script directory: `cd gem5-scripts`
+3. Enter the CACTI script directory: `cd cacti-scripts`
 4. Build CACTI: `./build_cacti.bash`
 5. Run CACTI: `./run_cacti.bash`
 
