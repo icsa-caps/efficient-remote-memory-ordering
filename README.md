@@ -1,6 +1,6 @@
 # Efficient Remote Memory Ordering
 
-Code for submission to ASPLOS 2026.
+Code for the [paper](https://dl.acm.org/doi/abs/10.1145/3779212.3790156) submitted to ASPLOS 2026.
 
 ### gem5 Simulation
 
@@ -26,9 +26,10 @@ Instructions for reproducing the figures from gem5 simulation:
 
 1. Enter the gem5 script directory: `cd gem5-scripts`
 2. Run the script to set up and build gem5: `./setup-gem5.bash`
-3. Run the script to run all simulations: `./run-gem5.bash`
-4. Set the python command in line 3 of `plot-gem5.bash` (default is `python3`)
-5. Run the script to plot all simulation results: `./plot-gem5.bash`
+3. Run the script to generate input files: `./setup-benchmarks.bash`
+4. Run the script to run all simulations: `./run-gem5.bash`
+5. Set the python command in line 3 of `plot-gem5.bash` (default is `python3`)
+6. Run the script to plot all simulation results: `./plot-gem5.bash`
 
 Plots can be found in the directory `gem5-scripts/plots`.
 
@@ -45,4 +46,17 @@ Instructions for obtaining the CACTI results:
 5. Run CACTI: `./run_cacti.bash`
 
 Results can be found in the directory `cacti-scripts/results`.
+
+### Using Docker (for gem5 simulation and CACTI)
+
+We tested this repository in the Docker container created from the Dockerfile. 
+Instructions for setting up the Docker container 
+(depending on how Docker is set up on your system, sudo permissions might be required):
+
+1. Build the Docker image: `docker build -t test-image .`
+2. Create the Docker container and run in interactive mode: `docker run -it --name test-container test-image /bin/bash`
+3. Clone this repository into the Docker container: `git clone https://github.com/icsa-caps/efficient-remote-memory-ordering.git efficient-remote-memory-ordering`
+4. Enter the directory of the repository: `cd efficient-remote-memory-ordering`
+
+Refer to the sections on [gem5 Simulation](#gem5-simulation) and [CACTI](#cacti) for instructions on running the gem5 simulation and CACTI respectively. 
 
