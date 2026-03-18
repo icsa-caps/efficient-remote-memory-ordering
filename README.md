@@ -31,7 +31,9 @@ Instructions for reproducing the figures from gem5 simulation:
 5. Set the python command in line 3 of `plot-gem5.bash` (default is `python3`)
 6. Run the script to plot all simulation results: `./plot-gem5.bash`
 
-Plots can be found in the directory `gem5-scripts/plots`.
+Plots can be found in the directory `gem5-scripts/plots`. 
+
+Running simulations for individual figures can be done by entering the directory `gem5/experiment-scripts` and executing the bash scripts at step 4. 
 
 ### CACTI
 
@@ -59,4 +61,18 @@ Instructions for setting up the Docker container
 4. Enter the directory of the repository: `cd efficient-remote-memory-ordering`
 
 Refer to the sections on [gem5 Simulation](#gem5-simulation) and [CACTI](#cacti) for instructions on running the gem5 simulation and CACTI respectively. 
+
+Copying the results and plots out of the Docker container:
+
+1. Detach from the running container: Use the keys `Ctrl` + `p` then `Ctrl` + `q`
+2. Copy the plots out of the running container: `docker container cp test-container:/top/efficient-remote-memory-ordering/gem5-scripts/plots .`
+
+If the CACTI results need to be copied out of the container instead of the gem5 simulation plots, run 
+`docker container cp test-container:/top/efficient-remote-memory-ordering/cacti-scripts/results .` instead of the command in step 2. 
+
+Instructions for deleting the Docker container and image:
+
+1. Kill the running container: `docker container kill test-container`
+2. Remove the container: `docker container rm test-container`
+3. Remove the image: `docker rmi test-image`
 
