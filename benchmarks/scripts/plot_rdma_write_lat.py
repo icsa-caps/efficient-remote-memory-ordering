@@ -1,7 +1,13 @@
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FuncFormatter
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def results_path(filename):
+    return os.path.join(SCRIPT_DIR, "..", "rdma", "results", filename)
 
 PLOT_WIDTH = 3.38 # paper
 PLOT_HEIGHT = 2 # paper
@@ -21,10 +27,10 @@ plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)
 
 # Load CSV
-df = pd.read_csv("results/write_lat.csv")
-df_bf = pd.read_csv("results/write_bf_lat.csv")
-df_bf_1cl = pd.read_csv("results/write_bf_lat_1cl.csv")
-df_bf_inline = pd.read_csv("results/write_bf_inline_lat.csv")
+df = pd.read_csv(results_path("ordered_dma.csv"))
+df_bf = pd.read_csv(results_path("unordered_dma.csv"))
+df_bf_1cl = pd.read_csv(results_path("one_dma.csv"))
+df_bf_inline = pd.read_csv(results_path("all_mmio.csv"))
 
 # Extract latency column
 latency = df["latency_ns"].values
@@ -96,6 +102,6 @@ ax.set_ylabel("CDF")
 
 # Save plot
 fig.tight_layout()
-fig.savefig("results/write_lat_cdf_final3.png")
-fig.savefig("results/write_lat_cdf_final3.pdf")
+fig.savefig(results_path("write_lat_cdf.png"))
+fig.savefig(results_path("write_lat_cdf.pdf"))
 
