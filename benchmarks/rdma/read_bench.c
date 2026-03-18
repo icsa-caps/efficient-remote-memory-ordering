@@ -134,7 +134,7 @@ inline int pollCompletion(struct ibv_cq* cq, size_t expected, struct ibv_wc* wcR
   return numCompletions;
 }
 
-void connect_client(struct client_context *ctx) {
+void connect_client(struct client_context *ctx, const char *server_ip, const char *server_port) {
   struct rdma_cm_event *event;
   struct rdma_conn_param conn_param = { 0 };
 
@@ -147,9 +147,9 @@ void connect_client(struct client_context *ctx) {
   // resolve addr
   struct sockaddr_in srv = {
     .sin_family = AF_INET,
-    .sin_port   = htons(atoi(SERVER_PORT))
+    .sin_port   = htons(atoi(server_port))
   };
-  inet_pton(AF_INET, SERVER_IP, &srv.sin_addr);
+  inet_pton(AF_INET, server_ip, &srv.sin_addr);
 
   if (rdma_resolve_addr(ctx->id, NULL,
         (struct sockaddr*)&srv, 2000))
@@ -281,6 +281,8 @@ enum {
   OPT_NUM_QP = 'q',
   OPT_SIGNALED = 'g',
   OPT_FENCE = 'f',
+  OPT_SERVER = 'S',
+  OPT_PORT = 'p',
 };
 
 /* Used by main to communicate with parse_opt. */
@@ -291,6 +293,8 @@ struct arguments {
   int num_qps;
   bool signaled;
   bool fence;
+  char *server;
+  char *port;
 };
 
 /* The options we understand. */
@@ -301,6 +305,8 @@ static struct argp_option options[] = {
   {"num_qps", OPT_NUM_QP, "N", 0, "Number of QP to use (default: 1)"},
   {"signaled", OPT_SIGNALED,  NULL,       0, "Use signaled completions for all requests (default: false)" },
   {"fence", OPT_FENCE,  NULL,       0, "Use fence flag for all ops (default: false)" },
+  {"server", OPT_SERVER, "IP",  0, "Server IP address (default: " SERVER_IP ")" },
+  {"port",   OPT_PORT,   "PORT", 0, "Server port (default: " SERVER_PORT ")" },
   { 0 }
 };
 
@@ -339,6 +345,12 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     case OPT_FENCE:
       arguments->fence = true;
       break;
+    case OPT_SERVER:
+      arguments->server = arg;
+      break;
+    case OPT_PORT:
+      arguments->port = arg;
+      break;
     case ARGP_KEY_ARG:
     case ARGP_KEY_END:
       break;
@@ -353,7 +365,7 @@ static struct argp argp = { options, parse_opt, args_doc, doc };
 
 
 int main(int argc, char **argv) {
-  struct arguments arguments = {16, 64, 1, 1, false, false};
+  struct arguments arguments = {16, 64, 1, 1, false, false, SERVER_IP, SERVER_PORT};
   argp_parse(&argp, argc, argv, 0, 0, &arguments);
   printf("Batch size: %d\n", arguments.batch_size);
   printf("Object size: %d\n", arguments.object_size);
@@ -361,6 +373,8 @@ int main(int argc, char **argv) {
   printf("Number of QPs: %d\n", arguments.num_qps);
   printf("Signaled: %s\n", arguments.signaled ? "true" : "false");
   printf("Fence: %s\n", arguments.fence ? "true" : "false");
+  printf("Server: %s\n", arguments.server);
+  printf("Port: %s\n", arguments.port);
   
   struct client_context *ctx[MAX_QP];
   int n = arguments.num_threads;
@@ -381,7 +395,7 @@ int main(int argc, char **argv) {
 
     ctx[i]->buffer_size = arguments.object_size;
 
-    connect_client(ctx[i]);
+    connect_client(ctx[i], arguments.server, arguments.port);
   }
 
   for (int i = 0; i < n; i++) {

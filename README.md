@@ -77,3 +77,30 @@ Instructions for deleting the Docker container and image:
 2. Remove the container: `docker container rm test-container`
 3. Remove the image: `docker rmi test-image`
 
+## Benchmarks and Emulation ##
+
+### Cost of DMA Ordering (Figure-2) ###
+
+This experiment requires two Cloudlab machines of type `sm110p` with Ubuntu 22.04. One act as a client and another act as server.
+Setup the machines by running following commands to install necessary packages and OFED library.
+```bash
+$ ./benchmarks/scripts/setup.sh ofed
+$ reboot
+$ ./benchmarks/scripts/setup.sh setup
+```
+
+On the client and server machines build the RDMA benchmarks by running following commands:
+```
+$ cd benchmarks/rdma
+$ make
+```
+
+On the server machine run following to run the server:
+```
+$ ./benchmarks/rdma/rdma_server 128 1
+```
+
+On the client machine run following script to collect results and generate the plot for Figure-2:
+```
+$ SERVER_IP=10.10.1.2 PORT=20079 CPU=0 ./benchmarks/scripts/run_write_lat_bench.sh
+```
