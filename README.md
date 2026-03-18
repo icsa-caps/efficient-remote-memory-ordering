@@ -1,6 +1,6 @@
 # Efficient Remote Memory Ordering
 
-Code for the [paper](https://dl.acm.org/doi/abs/10.1145/3779212.3790156) submitted to ASPLOS 2026.
+Code for the paper "[Efficient Remote Memory Ordering for Non-Coherent Interconnects](https://dl.acm.org/doi/abs/10.1145/3779212.3790156)" submitted to ASPLOS 2026.
 
 ### gem5 Simulation
 
@@ -25,7 +25,7 @@ Scripts for running the gem5 simulations can be found in the directory `gem5-scr
 Instructions for reproducing the figures from gem5 simulation:
 
 1. Enter the gem5 script directory: `cd gem5-scripts`
-2. Run the script to set up and build gem5: `./setup-gem5.bash`
+2. Run the script to set up and build gem5 (some interaction needed): `./setup-gem5.bash`
 3. Run the script to generate input files: `./setup-benchmarks.bash`
 4. Run the script to run all simulations: `./run-gem5.bash`
 5. Set the python command in line 3 of `plot-gem5.bash` (default is `python3`)
