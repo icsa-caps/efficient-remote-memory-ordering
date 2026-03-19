@@ -79,9 +79,7 @@ Instructions for deleting the Docker container and image:
 
 ## Benchmarks and Emulation ##
 
-### Cost of DMA Ordering (Figure-2) ###
-
-This experiment requires two Cloudlab machines of type `sm110p` with Ubuntu 22.04. One act as a client and another act as server.
+This experiments require two Cloudlab machines of type `sm110p` with Ubuntu 22.04. One act as a client and another act as server.
 Setup the machines by running following commands to install necessary packages and OFED library.
 ```bash
 $ ./benchmarks/scripts/setup.sh ofed
@@ -95,12 +93,26 @@ $ cd benchmarks/rdma
 $ make
 ```
 
-On the server machine run following to run the server:
+### Cost of DMA Ordering (Figure-2) ###
+
+On the server machine run the following command to run the server:
 ```
 $ ./benchmarks/rdma/rdma_server 128 1
 ```
 
-On the client machine run following script to collect results and generate the plot for Figure-2:
+On the client machine run the following script to collect results and generate the plot for Figure-2:
 ```
 $ SERVER_IP=10.10.1.2 PORT=20079 CPU=0 ./benchmarks/scripts/run_write_lat_bench.sh
+```
+
+### RDMA READ/WRITE Throughput (Figure-3) ###
+
+On the server machine run the following command to run the server:
+```
+$ ./benchmarks/rdma/rdma_server 128 1
+```
+
+One the client machine run the following script to collect results and generate the plot for Figure-3:
+```
+$ SERVER_IP=10.10.1.2 PORT=20079 ./benchmarks/scripts/run_rdma_bench.sh
 ```
