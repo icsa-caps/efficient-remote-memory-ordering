@@ -29,11 +29,11 @@ PLOT_HEIGHT = 2.5
 SCRIPT_NAME = os.path.basename(__file__)
 
 RESULT_MMIO_TPUT = sys.argv[1]
-RESULT_MMIO_TPUT_SFENCE = sys.argv[2]
-OUTPUT_FOLDER = sys.argv[3]
+OUTPUT_FOLDER = sys.argv[2]
 
-df_mmio_tput = pd.read_csv(RESULT_MMIO_TPUT)
-df_mmio_tput_sfence = pd.read_csv(RESULT_MMIO_TPUT_SFENCE)
+df = pd.read_csv(RESULT_MMIO_TPUT)
+df_mmio_tput = df[df['sfence'] == 0]
+df_mmio_tput_sfence = df[df['sfence'] == 1]
     
 SMALL_SIZE = 9
 MEDIUM_SIZE = 10
@@ -50,14 +50,14 @@ plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)
 
-X_COLUMN='sizes'
+X_COLUMN='size_b'
 X_LBL='Message Size (B)'
-Y_COLUMN='tput'
+Y_COLUMN='gbps'
 Y_LBL='Bandwidth (Gb/s)'
 
 def plot_bw():
-    fig_file_name_pdf = '{}/mmio_sizes_tput.pdf'.format(OUTPUT_FOLDER)
-    fig_file_name_png = '{}/mmio_sizes_tput.png'.format(OUTPUT_FOLDER)
+    fig_file_name_pdf = '{}/mmio_bench.pdf'.format(OUTPUT_FOLDER)
+    fig_file_name_png = '{}/mmio_bench.png'.format(OUTPUT_FOLDER)
 
     fig, ax = plt.subplots(figsize=(PLOT_WIDTH, PLOT_HEIGHT))
 

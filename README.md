@@ -135,3 +135,12 @@ Make sure the server can do ssh to the client machine. Then run the experiment s
 $ SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
 ```
 
+### MMIO Write Bandwidth (Figure-4) ###
+
+This experiment can be run on a single machine. Cloudlab machine type `r6525` with Ubuntu 22.04 is used for this experiment in the paper.
+To run the experiment, execute the following command:
+```
+$ bash benchmarks/scripts/run_mmio_bench.sh
+```
+
+Generated plot can be found in `benchmarks/mmio/results/mmio_bench.pdf`.

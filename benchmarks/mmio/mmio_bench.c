@@ -24,8 +24,6 @@
 #define TPUT_LOOP_SIZE 0x80000000 // Total bytes to transfer 2GB
 #define TPUT_LOOP_ITER 128
 
-# define USE_SFENCE 0
-
 // Module parameters
 static int bench_size = 0;
 
