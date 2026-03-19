@@ -1,6 +1,6 @@
 # Efficient Remote Memory Ordering
 
-Code for the paper "[Efficient Remote Memory Ordering for Non-Coherent Interconnects](https://dl.acm.org/doi/abs/10.1145/3779212.3790156)" submitted to ASPLOS 2026.
+Code for the paper "[Efficient Remote Memory Ordering for Non-Coherent Interconnects](https://dl.acm.org/doi/abs/10.1145/3779212.3790156)" presented in ASPLOS 2026.
 
 ### gem5 Simulation
 
@@ -116,3 +116,19 @@ One the client machine run the following script to collect results and generate 
 ```
 $ SERVER_IP=10.10.1.2 PORT=20079 ./benchmarks/scripts/run_rdma_bench.sh
 ```
+
+### RDMA Key-Value Store Emulation (Figure-7) ###
+
+The experiment script assumes that the client and server machines have a common shared directory available as in Cloudlab.
+
+Run the following command to build the benchmark:
+```
+$ git submodule update --init --recursive
+$ bash benchmarks/RDMA_synchronization/scripts/install.sh build
+```
+
+Make sure server can do ssh to client machine. Then run the experiment on the server machine:
+```
+$ SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
+```
+

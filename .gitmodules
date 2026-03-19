@@ -1,3 +1,6 @@
 [submodule "cacti"]
 	path = cacti
 	url = https://github.com/LiewWS/cacti.git
+[submodule "benchmarks/RDMA_synchronization"]
+	path = benchmarks/RDMA_synchronization
+	url = https://github.com/aagontuk/RDMA_synchronization
