@@ -43,12 +43,12 @@ plt.rc('figure', titlesize=BIGGER_SIZE)
 
 X_COLUMN_THREAD='threads'
 X_LBL_THREADS='Threads'
-X_COLUMN_QP='qp'
+X_COLUMN_QP=' QP'
 X_LBL='Number of QPs'
-X_COLUMN_BENCH='bench'
-Y_COLUMN='tput_gbps'
+X_COLUMN_BENCH='Benchmark'
+Y_COLUMN=' Throughput (Gbps)'
 Y_LBL='Bandwidth (Gb/s)'
-Y_COLUMN_MOP='tput_ops'
+Y_COLUMN_MOP=' Throughput (ops/sec)'
 Y_LBL_MOP='M op/s'
 LABELS_TH = ["1 QP", "2 QP", "4 QP"]
 LABELS_QP = {"READ": "READ", "WRITE": "WRITE"}
