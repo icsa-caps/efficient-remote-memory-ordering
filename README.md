@@ -79,74 +79,87 @@ Instructions for deleting the Docker container and image:
 
 ## Benchmarks and Emulation ##
 
-This experiments require two Cloudlab machines of type `sm110p` with Ubuntu 22.04. One act as a client and another act as server.
-Setup the machines by running following commands to install necessary packages and OFED library.
+These experiments require two Cloudlab machines of type `sm110p` with Ubuntu 22.04 — one acting as a client and the other as a server.
+
+Set up both machines by running the following commands to install necessary packages and the OFED library:
 ```bash
-$ ./benchmarks/scripts/setup.sh ofed
-$ reboot
-$ ./benchmarks/scripts/setup.sh setup
+bash benchmarks/scripts/setup.sh ofed
+reboot
+bash benchmarks/scripts/setup.sh setup
 ```
 
-On the client and server machines build the RDMA benchmarks by running following commands:
+On both the client and server machines, build the RDMA benchmarks:
+```bash
+cd benchmarks/rdma
+make
 ```
-$ cd benchmarks/rdma
-$ make
-```
+
+> **Note:** Replace `SERVER_IP` and `CLIENT_IP` in the commands below with the actual IP addresses of your machines. The examples use `10.10.1.2` for the server and `10.10.1.1` for the client.
 
 ### Cost of DMA Ordering (Figure-2) ###
 
-On the server machine run the following command to run the server:
-```
-$ ./benchmarks/rdma/rdma_server 128 1
+This benchmark measures the cost of DMA ordering.
+
+On the **server** machine, start the server:
+```bash
+./benchmarks/rdma/rdma_server 128 1
 ```
 
-On the client machine run the following script to collect results and generate the plot for Figure-2:
-```
-$ SERVER_IP=10.10.1.2 PORT=20079 CPU=0 ./benchmarks/scripts/run_write_lat_bench.sh
+On the **client** machine, collect results and generate the plot:
+```bash
+SERVER_IP=10.10.1.2 PORT=20079 CPU=0 bash benchmarks/scripts/run_write_lat_bench.sh
 ```
 
-Generated plot can be found in `benchmarks/rdma/results/write_lat_cdf.pdf`.
+Generated plot: `benchmarks/rdma/results/write_lat_cdf.pdf`
 
 ### RDMA READ/WRITE Throughput (Figure-3) ###
 
-On the server machine run the following command to run the server:
-```
-$ ./benchmarks/rdma/rdma_server 128 1
-```
+This benchmark measures throughput for RDMA READ and WRITE operations across varying queue pair counts.
 
-One the client machine run the following script to collect results and generate the plot for Figure-3:
-```
-$ SERVER_IP=10.10.1.2 PORT=20079 ./benchmarks/scripts/run_rdma_bench.sh
+On the **server** machine, start the server:
+```bash
+./benchmarks/rdma/rdma_server 128 1
 ```
 
-Generated plot can be found in `benchmarks/rdma/results/rdma_read_write_qp.pdf`.
-
-### RDMA Key-Value Store Emulation (Figure-7) ###
-
-The experiment script assumes that the client and server machines have a common network attached shared directory available as available in Cloudlab.
-
-Run the following command to build the benchmark:
-```
-$ git submodule update --init --recursive
-$ bash benchmarks/RDMA_synchronization/scripts/install.sh build
-
-# Setup hugepages both on the client and server machines
-$ bash benchmarks/RDMA_synchronization/scripts/install.sh hugepages
+On the **client** machine, collect results and generate the plot:
+```bash
+SERVER_IP=10.10.1.2 PORT=20079 bash benchmarks/scripts/run_rdma_bench.sh
 ```
 
-Make sure the server can do ssh to the client machine. Then run the experiment script on the server machine:
-```
-$ SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
-```
-
-Generated plot can be found in `benchmarks/RDMA_synchronization/scripts/results/rdma_kvs.pdf`.
+Generated plot: `benchmarks/rdma/results/rdma_read_write_qp.pdf`
 
 ### MMIO Write Bandwidth (Figure-4) ###
 
-This experiment can be run on a single machine. Cloudlab machine type `r6525` with Ubuntu 22.04 is used for this experiment in the paper.
-To run the experiment, execute the following command:
-```
-$ bash benchmarks/scripts/run_mmio_bench.sh
+This benchmark measures the bandwidth of write-combining MMIO writes with or without sfence instructions.
+
+This experiment can be run on a single machine. The paper uses a Cloudlab machine of type `r6525` with Ubuntu 22.04.
+
+Run the experiment:
+```bash
+bash benchmarks/scripts/run_mmio_bench.sh
 ```
 
-Generated plot can be found in `benchmarks/mmio/results/mmio_bench.pdf`.
+Generated plot: `benchmarks/mmio/results/mmio_bench.pdf`
+
+### RDMA Key-Value Store Emulation (Figure-7) ###
+
+The experiment script assumes that the client and server machines share a common network-attached directory (as available on Cloudlab).
+For this experiment, the paper uses two Cloudlab machines of type `sm110p` with Ubuntu 22.04.
+
+Build the benchmark (run once on either machine):
+```bash
+git submodule update --init --recursive
+bash benchmarks/RDMA_synchronization/scripts/install.sh build
+```
+
+Set up hugepages on **both** the client and server machines:
+```bash
+bash benchmarks/RDMA_synchronization/scripts/install.sh hugepages
+```
+
+Ensure the server machine can SSH into the client machine. Then run the experiment script on the **server** machine:
+```bash
+SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
+```
+
+Generated plot: `benchmarks/RDMA_synchronization/scripts/results/rdma_kvs.pdf`
