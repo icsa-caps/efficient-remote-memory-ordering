@@ -119,15 +119,18 @@ $ SERVER_IP=10.10.1.2 PORT=20079 ./benchmarks/scripts/run_rdma_bench.sh
 
 ### RDMA Key-Value Store Emulation (Figure-7) ###
 
-The experiment script assumes that the client and server machines have a common shared directory available as in Cloudlab.
+The experiment script assumes that the client and server machines have a common network attached shared directory available as available in Cloudlab.
 
 Run the following command to build the benchmark:
 ```
 $ git submodule update --init --recursive
 $ bash benchmarks/RDMA_synchronization/scripts/install.sh build
+
+# Setup hugepages both on the client and server machines
+$ bash benchmarks/RDMA_synchronization/scripts/install.sh hugepages
 ```
 
-Make sure server can do ssh to client machine. Then run the experiment on the server machine:
+Make sure the server can do ssh to the client machine. Then run the experiment script on the server machine:
 ```
 $ SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
 ```
