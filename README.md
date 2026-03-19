@@ -105,6 +105,8 @@ On the client machine run the following script to collect results and generate t
 $ SERVER_IP=10.10.1.2 PORT=20079 CPU=0 ./benchmarks/scripts/run_write_lat_bench.sh
 ```
 
+Generated plot can be found in `benchmarks/rdma/results/write_lat_cdf.pdf`.
+
 ### RDMA READ/WRITE Throughput (Figure-3) ###
 
 On the server machine run the following command to run the server:
@@ -116,6 +118,8 @@ One the client machine run the following script to collect results and generate 
 ```
 $ SERVER_IP=10.10.1.2 PORT=20079 ./benchmarks/scripts/run_rdma_bench.sh
 ```
+
+Generated plot can be found in `benchmarks/rdma/results/rdma_read_write_qp.pdf`.
 
 ### RDMA Key-Value Store Emulation (Figure-7) ###
 
@@ -134,6 +138,8 @@ Make sure the server can do ssh to the client machine. Then run the experiment s
 ```
 $ SERVER_IP=10.10.1.2 CLIENT_IP=10.10.1.1 bash benchmarks/RDMA_synchronization/scripts/run_exp.sh
 ```
+
+Generated plot can be found in `benchmarks/RDMA_synchronization/scripts/results/rdma_kvs.pdf`.
 
 ### MMIO Write Bandwidth (Figure-4) ###
 

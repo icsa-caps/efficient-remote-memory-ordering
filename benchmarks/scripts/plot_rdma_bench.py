@@ -131,8 +131,8 @@ def plot_qps_vs_tput(df, machine, size, threads, out_dir):
 
 def plot_bar_bench(df, machine, size, out_dir):
     file_paths = []
-    file_paths.append(os.path.join(out_dir, "bar_m{}_s{}_2qp_final2.pdf".format(machine, size)))
-    file_paths.append(os.path.join(out_dir, "bar_m{}_s{}_2qp_final2.png".format(machine, size)))
+    file_paths.append(os.path.join(out_dir, "rdma_read_write_qp.pdf"))
+    file_paths.append(os.path.join(out_dir, "rdma_read_write_qp.png"))
     
     columns = ['size','operation','num_qp','throughput', 'mpps']
     num_qps = df[X_COLUMN_QP].unique()
