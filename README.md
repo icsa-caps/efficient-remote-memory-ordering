@@ -2,7 +2,7 @@
 
 Code for the paper "[Efficient Remote Memory Ordering for Non-Coherent Interconnects](https://dl.acm.org/doi/abs/10.1145/3779212.3790156)" presented in ASPLOS 2026.
 
-### gem5 Simulation
+## gem5 Simulation
 
 The files for gem5 simulation can be found in the gem5 directory. 
 The files are obtained from version 24.1 of gem5.
@@ -36,7 +36,7 @@ Plots can be found in the directory `gem5-scripts/plots`.
 Running simulations for individual figures can be done by entering the directory `gem5/experiment-scripts` and executing the required bash scripts. 
 This should be done at step 4. 
 
-### CACTI
+## CACTI
 
 Scripts for building and running CACTI can be found in the directory `cacti-scripts`. 
 
@@ -50,7 +50,7 @@ Instructions for obtaining the CACTI results:
 
 Results can be found in the directory `cacti-scripts/results`.
 
-### Using Docker (for gem5 simulation and CACTI)
+## Using Docker (for gem5 simulation and CACTI)
 
 We tested this repository in the Docker container created from the Dockerfile. 
 Instructions for setting up the Docker container 
